@@ -1,0 +1,29 @@
+<div>
+
+  <h3>{{mode}} Review form</h3>
+  <br><br>
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <label for="username">Username:</label><br>
+    <mat-form-field appearance="fill" >
+      <input matInput placeholder="Enter username" id="username" [(ngModel)]="username" name="username" >
+    </mat-form-field>
+  <br><br>
+  <label for="title">E-mail:</label><br>
+  <mat-form-field appearance="fill" >
+    <input matInput placeholder="Enter your email" id="email" [(ngModel)]="email" name="email" >
+  </mat-form-field>
+<br><br> 
+<label for="title">Rating: (/5)</label><br>
+<mat-form-field appearance="fill" >
+  <input matInput placeholder="Enter your rating score /5" id="rating" [(ngModel)]="rating" name="rating" >
+</mat-form-field>
+<br><br> 
+  <label for="comment">Leave a quick review:</label><br>
+    <mat-form-field style=" width: 100%;" appearance="fill">
+      <textarea matInput rows="5" cols="40" placeholder="Ex: I love this.." id="comment" [(ngModel)]="comment" name="comment" ></textarea>
+    </mat-form-field>
+  
+    <p>
+      <button type="submit" mat-raised-button color="primary">Submit</button>      </p>
+  </form>
+  </div>

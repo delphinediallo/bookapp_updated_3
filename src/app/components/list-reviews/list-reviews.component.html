@@ -1,0 +1,15 @@
+
+  <app-review-menu></app-review-menu>
+  <div>  
+    <ul *ngFor ="let review of reviews let i = index">
+      <p style="font-weight: 600;"><i class="material-icons md-36 md-dark md-inactive vertical-align-middle padding-bottom-3">account_circle </i> {{review.username}}</p> 
+      <p style="color: lightslategrey;">{{review.email}}</p>
+      <p style="color: lightslategrey;">Rating (/5): {{review.rating}}</p>
+      <p> {{review.comment}} </p> 
+        <button mat-button mat-stroked-button color="primary"(click)="onDelete(review._id)">Remove</button>
+        <button mat-button mat-stroked-button color="primary" [routerLink]="['/editReview', review._id]">Update</button>
+        
+      
+    </ul> 
+    
+</div>

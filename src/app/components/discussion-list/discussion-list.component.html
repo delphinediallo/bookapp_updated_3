@@ -1,0 +1,74 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by username"
+          [(ngModel)]="username"
+        />
+        <div class="input-group-append">
+          <button mat-flat-button color="primary"
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchUsername()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mat-body">
+      <h4>Discussions List</h4>
+      <ul class="list-group">
+  
+        <mat-list
+          class="list-group-item"
+          *ngFor="let discussion of discussions; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveDiscussion(discussion, i)"
+        >
+          <b>{{discussion.postn}}</b>
+          {{discussion.username}}
+          {{discussion.bookn}}
+        </mat-list>
+      </ul>
+  <button mat-raised-button color="primary" routerLink="/discussions/add">Create a Discussion Post</button>
+      <button mat-raised-button color="warn" (click)="removeAllDiscussions()">
+        Remove All
+      </button>
+    </div>
+    <div class="mat-body">
+      <div *ngIf="currentDiscussion">
+        <h4>Discussion Post</h4>
+        <div>
+          <label><strong>Username:</strong></label> {{ currentDiscussion.username }}
+        </div>
+        <div>
+          <label><strong>Post Title:</strong></label>
+          {{ currentDiscussion.postn }}
+        </div>
+        <div>
+          <label><strong>Book Title:</strong></label>
+          {{ currentDiscussion.bookn }}
+        </div>
+        <div>
+          <label><strong>Post:</strong></label>
+          {{ currentDiscussion.post }}
+        </div>
+        <div>
+          <label><strong>Status:</strong></label>
+          {{ currentDiscussion.read ? "Read" : "Pending" }}
+        </div>
+  
+        <a class="badge badge-warning" [routerLink]="['/discussions/edit', currentDiscussion._id]">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentDiscussion">
+        <br />
+        <p>Please click on a Discussion Post</p>
+      </div>
+    </div>
+  </div>  

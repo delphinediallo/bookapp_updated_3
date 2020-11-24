@@ -1,0 +1,26 @@
+<div style="text-align:center;">
+    <h2 class="pageTitle">COMMUNITY NEWS</h2>
+    <div class="submitFormContainer">
+    <h3>Add/Edit a News Post</h3>
+    <hr/>
+    <form [formGroup]="blogForm" (ngSubmit)="addPost()">
+        <div class="form-group">
+            <label for="postDate">Post Date:</label>
+            <input name="postDate" type="date" id="postDate" formControlName="postDate" [(ngModel)]="postDate">
+
+            <label for="postAuthor">Post Author:</label>
+            <input name="postAuthor" type="text" id="postAuthor" formControlName="postAuthor" [(ngModel)]="postAuthor">
+
+            <label for="postTitle">Post Title:</label>
+            <input name="postTitle" type="text" id="postTitle" formControlName="postTitle" [(ngModel)]="postTitle">
+        
+            <label for="postContent">Post Content:</label>
+            <textarea name="postContent" id="postContent" formControlName="postContent" [(ngModel)]="postContent"></textarea>
+        </div>
+        <div>
+            <button mat-flat-button color="primary" type="reset" [innerText]="resetButton" (click)="resetForm()"></button>
+            <button mat-flat-button color="primary" type="submit" [innerText]="submitButton" [disabled]="!blogForm.valid"></button>
+        </div>
+    </form>
+    </div>
+</div>

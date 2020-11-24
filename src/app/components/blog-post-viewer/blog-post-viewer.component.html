@@ -1,0 +1,14 @@
+<div style="text-align:center;">
+    <h2>COMMUNITY NEWS</h2>
+    <a routerLink="/news/add">Add a News Post</a>
+    <hr/>
+    <div class="postContainer" *ngFor="let news of news let i = index">
+        <h3>{{news.postTitle}}</h3>
+        <p>{{news.postDate | date:'longDate'}} | {{news.postAuthor}}</p>
+        <p>{{news.postContent}}</p>
+        <p>news id: {{news._id}}</p>
+        <button mat-raised-button color="primary" [routerLink]="['/news/edit', news._id]">Edit</button>
+        <button mat-raised-button color="warn" (click)="onDelete(news._id)">Delete</button>
+    </div>
+</div>
+

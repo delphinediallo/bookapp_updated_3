@@ -1,0 +1,26 @@
+.appName {
+    font-size: 120%;
+}
+.mat-toolbar {
+    height: 8vh;
+}
+div {
+    overflow: inherit;
+}
+.mat-sidenav-container{
+  min-height: 93vh !important;
+}
+a {
+    text-decoration: none;
+    font-size: 100%;
+    white-space: normal;
+}
+.menu-spacer {
+    flex: 1 1 auto;
+}
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}

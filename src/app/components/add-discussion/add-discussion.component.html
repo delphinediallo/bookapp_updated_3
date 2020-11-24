@@ -1,0 +1,56 @@
+<div style="width: 400px; margin: auto;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            required
+            [(ngModel)]="discussion.username"
+            name="username"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="postn">Post Title</label>
+          <input
+            class="form-control"
+            id="postn"
+            required
+            [(ngModel)]="discussion.postn"
+            name="description"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="bookn">Book Title</label>
+          <input
+            class="form-control"
+            id="bookn"
+            required
+            [(ngModel)]="discussion.bookn"
+            name="description"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="post">Post</label>
+          <input
+            class="form-control"
+            id="post"
+            required
+            [(ngModel)]="discussion.post"
+            name="description"
+          />
+        </div>
+        <button (click)="saveDiscussion()" class="btn btn-success">Submit</button>
+        </div>
+  
+      <div *ngIf="submitted">
+        <h1>You submitted successfully!</h1>
+        <button class="btn btn-success" (click)="newDiscussion()">Add</button>
+      </div>
+    </div>
+  </div>  
