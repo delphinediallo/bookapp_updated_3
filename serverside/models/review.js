@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 //define a schema/ blueprint NOTE: id is not a part of the schema 
   const reviewSchema = new mongoose.Schema({
     username:  { type: String, required: true},
-    email:  { type: String, required: true},
+    bookTitle:  { type: String, required: true},
     rating:  { type: Number, required: true},
     comment:  { type: String, required: true},
   })

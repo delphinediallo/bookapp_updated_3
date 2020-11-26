@@ -1,26 +1,62 @@
-<div style="text-align:center;">
-    <h2 class="pageTitle">COMMUNITY NEWS</h2>
-    <div class="submitFormContainer">
-    <h3>Add/Edit a News Post</h3>
-    <hr/>
-    <form [formGroup]="blogForm" (ngSubmit)="addPost()">
-        <div class="form-group">
-            <label for="postDate">Post Date:</label>
-            <input name="postDate" type="date" id="postDate" formControlName="postDate" [(ngModel)]="postDate">
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-            <label for="postAuthor">Post Author:</label>
-            <input name="postAuthor" type="text" id="postAuthor" formControlName="postAuthor" [(ngModel)]="postAuthor">
+<!-- Header -->
+<header class="w3-container w3-red w3-center"
+    style="background-image: url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); padding:100px 16px">
+    <h1 class="w3-margin w3-jumbo">Community news </h1>
+    <p class="w3-xlarge"></p>
+</header>
 
-            <label for="postTitle">Post Title:</label>
-            <input name="postTitle" type="text" id="postTitle" formControlName="postTitle" [(ngModel)]="postTitle">
-        
-            <label for="postContent">Post Content:</label>
-            <textarea name="postContent" id="postContent" formControlName="postContent" [(ngModel)]="postContent"></textarea>
-        </div>
+<body>
+
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1200px" id="band">
+
+
         <div>
-            <button mat-flat-button color="primary" type="reset" [innerText]="resetButton" (click)="resetForm()"></button>
-            <button mat-flat-button color="primary" type="submit" [innerText]="submitButton" [disabled]="!blogForm.valid"></button>
+            <h2 class="pageTitle">COMMUNITY NEWS</h2>
+            <div class="submitFormContainer">
+                <h3>Add/Edit a News Post</h3>
+                <hr />
+                <form [formGroup]="blogForm" (ngSubmit)="addPost()">
+                    <div class="form-group">
+                        <label for="postDate">Post Date:</label><br>
+                        <mat-form-field appearance="fill" style="width: 50%;">
+                            <input matInput placeholder="Select date" name="postDate" type="date" id="postDate"
+                                formControlName="postDate" [(ngModel)]="postDate">
+                        </mat-form-field>
+                        <br><br>
+                        <label for="postAuthor">Post Author:</label><br>
+                        <mat-form-field appearance="fill" style="width: 50%;">
+                            <input matInput placeholder="Enter author" name="postAuthor" type="text" id="postAuthor"
+                                formControlName="postAuthor" [(ngModel)]="postAuthor">
+                        </mat-form-field>
+                        <br><br>
+                        <label for="postTitle">Post Title:</label><br>
+                        <mat-form-field appearance="fill" style="width: 50%;">
+                            <input matInput placeholder="Enter title" name="postTitle" type="text" id="postTitle"
+                                formControlName="postTitle" [(ngModel)]="postTitle">
+                        </mat-form-field>
+                        <br><br>
+                        
+                        <label for="postContent">Post Content:</label><br>
+                        <mat-form-field appearance="fill" style="width: 50%;"> 
+                        <textarea matInput rows="5" cols="40" placeholder="Write post here.." name="postContent" id="postContent" formControlName="postContent"
+                            [(ngModel)]="postContent"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-flat-button color="primary" type="reset" [innerText]="resetButton"
+                            (click)="resetForm()" style="width: 25%;"></button>
+                        <button mat-flat-button color="primary" type="submit" [innerText]="submitButton"
+                            [disabled]="!blogForm.valid" style="width: 25%;"></button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
-    </div>
-</div>

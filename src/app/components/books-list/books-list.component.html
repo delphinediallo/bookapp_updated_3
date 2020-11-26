@@ -8,79 +8,104 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Header -->
-<header class="w3-container w3-red w3-center" style="background-image: url('https://blog.hubspot.com/hubfs/brain-training-books.jpg'); padding:130px 16px" > 
+<header class="w3-container w3-red w3-center" style="background-image: url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); padding:100px 16px" > 
+
   <h1 class="w3-margin w3-jumbo">Bookshelf </h1>
   <p class="w3-xlarge">Browse your favorite books</p>
 </header>
 
-<body style="padding-top: 50px;"> 
-<div class="list row">
-  <div class="col-md-8">
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search by title"
-        [(ngModel)]="title"
-      />
-      <div class="input-group-append">
-        <button mat-flat-button color="primary"
-          class="btn btn-outline-secondary"
-          type="button"
-          (click)="searchTitle()"
-        >
-          Search
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="mat-body">
-    <h4>Books List</h4> <!--changed from tutorials-->
-    <ul class="list-group"> <!--all changed below-->
-      <mat-list
-        class="list-group-item"
-        *ngFor="let book of books; let i = index"
-        [class.active]="i == currentIndex"
-        (click)="setActiveBook(book, i)"
-      >
-        <b>{{ book.bookTitle }}</b>
-    </mat-list>
-    </ul>
-
-    <button mat-raised-button color="primary" routerLink="/books/add">Add Book</button>
-    <button mat-raised-button color="warn" (click)="removeAllBooks()">
-      Remove All
-    </button>
-  </div>
-  <div class="mat-body">
-    <div *ngIf="currentBook"> <!--changed from tutorials-->
-      <h4>Book</h4>
-      <div>
-        <label><strong>Title:</strong></label> {{ currentBook.bookTitle }}
-      </div>
-      <div>
-        <label><strong>Author:</strong></label>
-        {{ currentBook.bookAuthor }} <!--changed from description-->
-      </div>
-      <div> <!--below added-->
-        <label><strong>Year:</strong></label>
-        {{ currentBook.bookYear }} 
-      </div>
-      <div> <!--below added-->
-          <label><strong>Genre:</strong></label>
-          {{ currentBook.bookGenre }} 
+<body>
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1200px" id="band">
+    <div class="list row">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title"
+            style="width: 80%; float: left; height: 50px;" />
+          <div class="input-group-append">
+            <button mat-flat-button color="primary" class="btn btn-outline-secondary" type="button"
+              (click)="searchTitle()" style="width: 20%; float: right; height: 50px; font-size: 16px;">
+              Search
+            </button>
+          </div>
         </div>
-      <!--//removed published -->
-
-      <a class="badge badge-warning" [routerLink]="['/books/edit', currentBook._id]"> <!--changed from tutorials-->
-        Edit
-      </a>
+      </div>
     </div>
 
-    <div *ngIf="!currentBook"> <!--changed from currentTutorial-->
-      <br />
-      <p>Please click on a Book...</p>
+    <br><br><br>
+    <div class="w3-row-padding w3-justify w3-margin-top style=float:left; width:80%;">
+
+      <div class="w3-row">
+
+        <h1 class="w3-wide w3-xlarge ">BOOKS LIST</h1>
+        <hr style="width:50px;border:solid #673AB7 " class="w3-round" >
+        <!--changed from tutorials-->
+
+        <ul class="list-group">
+          <!--all changed below-->
+          <mat-selection-list #book [multiple]="false">
+            <mat-list-option class="list-group-item" *ngFor="let book of books; let i = index"
+              [class.active]="i == currentIndex" (click)="setActiveBook(book, i)">
+              <b>{{ book.title }}</b>
+
+            </mat-list-option>
+          </mat-selection-list>
+          <hr>
+
+          <div *ngIf="currentBook">
+            <!--changed from tutorials-->
+            <div>
+              <label><strong>Title:</strong></label> {{ currentBook.title }}
+            </div>
+            <div>
+              <label><strong>Author:</strong></label>
+              {{ currentBook.author }}
+              <!--changed from description-->
+            </div>
+            <div>
+              <!--below added-->
+              <label><strong>Year:</strong></label>
+              {{ currentBook.year }}
+            </div>
+            <div>
+              <!--below added-->
+              <label><strong>Genre:</strong></label>
+              {{ currentBook.genre }}
+            </div>
+
+            <br>
+            <!--//removed published -->
+            <button mat-button mat-stroked-button color="primary"
+              [routerLink]="['/books/edit', currentBook._id]">Edit</button>
+
+          </div>
+
+          <div *ngIf="!currentBook">
+            <!--changed from currentTutorial-->
+
+            <p>Please click on a Book...</p>
+          </div>
+        </ul>
+      </div>
     </div>
+
+    <div class="w3-row">
+      <button mat-raised-button color="primary" routerLink="/books/add"
+        style="width: 20%; height: 50px; font-size: 16px;">Add Book</button> &nbsp;
+      <button mat-raised-button color="warn" (click)="removeAllBooks()"
+        style="width: 20%; height: 50px; font-size: 16px;">
+        Remove All
+      </button>
+    </div>
+
   </div>
-</div>
+
+
 </body>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center " style="background-color:#673AB7 ; color: white;">  
+  <div class="w3-xlarge w3-padding-32">
+
+ </div>
+ <p>A project by Stephen Birt, Delphine Diallo, Kathreen Greer, Anna Kurenkov. <a href="http://catalog.kennesaw.edu/preview_course_nopop.php?catoid=25&coid=42423" target="_blank">IT Studio Design class</a></p>
+</footer>

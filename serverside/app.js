@@ -168,7 +168,7 @@ app.post('/reviews', (req, res, next) => {
   // create a new review variable and save request’s fields 
   const review = new Review({
    username: req.body.username,
-   email: req.body.email,
+   bookTitle: req.body.bookTitle,
    rating: req.body.rating,
    comment: req.body.comment
    
@@ -220,7 +220,7 @@ app.put('/news/edit/:id', (req,res,next) => {
      //find a document and set new first and last names
      Review.findOneAndUpdate({_id: req.params.id},
        {$set:{username : req.body.username,
-         email : req.body.email, 
+         bookTitle : req.body.bookTitle, 
          rating : req.body.rating ,
          comment : req.body.comment}},{new:true}) 
       .then((review) => {

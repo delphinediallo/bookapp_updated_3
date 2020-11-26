@@ -1,29 +1,47 @@
-<div>
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <h3>{{mode}} Review form</h3>
-  <br><br>
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="background-image: url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); padding:100px 16px" > 
+  <h1 class="w3-margin w3-jumbo">Book Reviews </h1>
+  <p class="w3-xlarge">Here, leave reviews of books you read.</p>
+</header>
+
+<body>
+ 
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1200px" id="band">
+
+  <h1>{{mode}} review</h1>
+  <div>  
+
   <form (ngSubmit)="onSubmit()" #myForm="ngForm">
     <label for="username">Username:</label><br>
-    <mat-form-field appearance="fill" >
+    <mat-form-field appearance="fill" style="width: 50%;" >
       <input matInput placeholder="Enter username" id="username" [(ngModel)]="username" name="username" >
     </mat-form-field>
   <br><br>
-  <label for="title">E-mail:</label><br>
-  <mat-form-field appearance="fill" >
-    <input matInput placeholder="Enter your email" id="email" [(ngModel)]="email" name="email" >
+  <label for="title">Book Title:</label><br>
+  <mat-form-field appearance="fill" style="width: 50%;" >
+    <input matInput placeholder="Enter your book Title" id="bookTitle" [(ngModel)]="bookTitle" name="bookTitle" >
   </mat-form-field>
 <br><br> 
 <label for="title">Rating: (/5)</label><br>
-<mat-form-field appearance="fill" >
+<mat-form-field appearance="fill" style="width: 50%;" >
   <input matInput placeholder="Enter your rating score /5" id="rating" [(ngModel)]="rating" name="rating" >
 </mat-form-field>
 <br><br> 
   <label for="comment">Leave a quick review:</label><br>
-    <mat-form-field style=" width: 100%;" appearance="fill">
+    <mat-form-field style=" width: 50%;" appearance="fill">
       <textarea matInput rows="5" cols="40" placeholder="Ex: I love this.." id="comment" [(ngModel)]="comment" name="comment" ></textarea>
     </mat-form-field>
   
     <p>
-      <button type="submit" mat-raised-button color="primary">Submit</button>      </p>
+      <button type="submit" mat-raised-button color="primary" style="width: 50%;">Submit</button>      </p>
   </form>
   </div>

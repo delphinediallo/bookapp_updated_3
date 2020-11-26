@@ -1,6 +1,35 @@
-<div style="text-align:center;">
-    <h2>COMMUNITY NEWS</h2>
-    <a routerLink="/news/add">Add a News Post</a>
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="background-image: url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); padding:100px 16px" > 
+    <h1 class="w3-margin w3-jumbo">Community news </h1>
+  <p class="w3-xlarge"></p>
+</header>
+
+<body>
+ 
+  <div class="w3-container w3-content w3-justify w3-padding-64" style="max-width:1200px" id="band">
+
+  <div class="w3-justify">
+<div>
+    <h1 class="w3-wide w3-xlarge ">COMMUNITY NEWS</h1>
+    <hr style="width:50px;border:solid #673AB7" class="w3-round" > 
+
+    <div class="w3-right-align">
+        <button mat-menu routerLink="//news/add" button mat-flat-button color="primary" style="width: 20%; height: 50px; font-size: 16px;">
+            <span>Add a News Post</span>
+          </button>
+        </div>
+    
+    </div>
+    
     <hr/>
     <div class="postContainer" *ngFor="let news of news let i = index">
         <h3>{{news.postTitle}}</h3>
@@ -11,4 +40,15 @@
         <button mat-raised-button color="warn" (click)="onDelete(news._id)">Delete</button>
     </div>
 </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center " style="background-color:#673AB7 ; color: white;">  
+    <div class="w3-xlarge w3-padding-32">
+  
+   </div>
+   <p>A project by Stephen Birt, Delphine Diallo, Kathreen Greer, Anna Kurenkov. <a href="http://catalog.kennesaw.edu/preview_course_nopop.php?catoid=25&coid=42423" target="_blank">IT Studio Design class</a></p>
+  </footer>
+
 

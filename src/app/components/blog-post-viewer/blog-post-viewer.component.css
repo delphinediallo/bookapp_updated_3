@@ -3,7 +3,8 @@
     border-width: 1px;
     padding: 5px 10px 5px 10px;
     margin: 20px 10px;
-    width: 95%;
+    width: 100%;
+    text-align: justify;
 }
 button[type=submit] {
     background-color: #3f51b5;

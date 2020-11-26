@@ -1,0 +1,21 @@
+label {
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+button[type=submit], 
+button[type=reset] {
+    color: white;
+    padding: 15px 15px;
+    margin: 10px 5px;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    opacity: 0.9;
+}
+
+.h1{
+
+    font-weight: bold;
+}

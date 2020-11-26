@@ -8,23 +8,42 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Header -->
-<header class="w3-container w3-red w3-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuvnJ3Ji5z0UhXFooDHYY5lYxhEvmTaZv4-g&usqp=CAU'); padding:130px 16px" > 
-  <h1 class="w3-margin w3-jumbo">Discussion </h1>
-  <p class="w3-xlarge"></p>
+<header class="w3-container w3-red w3-center" style="background-image: url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); padding:100px 16px" > 
+  <h1 class="w3-margin w3-jumbo">Book Reviews </h1>
+  <p class="w3-xlarge">Here, leave reviews of books you read.</p>
 </header>
 
-<body style="padding-top: 50px;">
-  <app-review-menu></app-review-menu>
-  <div>  
+<body>
+ 
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1200px" id="band">
+
+  <div class="w3-justify">
+    <h1 class="w3-wide w3-xlarge ">BROWSE REVIEWS</h1>
+        <hr style="width:50px;border:solid #673AB7" class="w3-round" >  
+        <app-review-menu></app-review-menu>
+
     <ul *ngFor ="let review of reviews let i = index">
       <p style="font-weight: 600;"><i class="material-icons md-36 md-dark md-inactive vertical-align-middle padding-bottom-3">account_circle </i> {{review.username}}</p> 
-      <p style="color: lightslategrey;">{{review.email}}</p>
-      <p style="color: lightslategrey;">Rating (/5): {{review.rating}}</p>
+      <p style="color:#673AB7"><b>Book Title: {{review.bookTitle}}</b></p>
+      <p><b>Rating (/5): </b>{{review.rating}}</p>
       <p> {{review.comment}} </p> 
-        <button mat-button mat-stroked-button color="primary"(click)="onDelete(review._id)">Remove</button>
-        <button mat-button mat-stroked-button color="primary" [routerLink]="['/editReview', review._id]">Update</button>
         
-      
+        <button mat-flat-button   color="primary" [routerLink]="['/editReview', review._id]">Update</button> &nbsp;
+        <button mat-flat-button color="warn"(click)="onDelete(review._id)">Remove</button> &nbsp;
+        <hr>
+ 
     </ul> 
     
 </div>
+
+
+  </div>
+
+  
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center " style="background-color:#673AB7 ; color: white;">  
+  <div class="w3-xlarge w3-padding-32">
+
+ </div>
+ <p>A project by Stephen Birt, Delphine Diallo, Kathreen Greer, Anna Kurenkov. <a href="http://catalog.kennesaw.edu/preview_course_nopop.php?catoid=25&coid=42423" target="_blank">IT Studio Design class</a></p>
+</footer>

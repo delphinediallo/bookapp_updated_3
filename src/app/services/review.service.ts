@@ -17,8 +17,8 @@ export class ReviewService {
         return this.http.get('http://localhost:8000/reviews');
     }
     // Uses http.post() to post data 
-addReviews(username: string, email: string,  rating: number, comment: string) {
-    this.http.post('http://localhost:8000/reviews',{ username, email, rating, comment })
+addReviews(username: string, bookTitle: string,  rating: number, comment: string) {
+    this.http.post('http://localhost:8000/reviews',{ username, bookTitle, rating, comment })
   .subscribe((responseData) => {
      console.log(responseData);
    }); 
@@ -33,11 +33,11 @@ deleteReview(reviewId: string) {
  
   }
  
-updateReview(reviewId: string,username: string, email: string, rating: number, comment: string) {
+updateReview(reviewId: string,username: string, bookTitle: string, rating: number, comment: string) {
     //request path http://localhost:8000/students/5xbd456xx 
     //first and last names will be send as HTTP body parameters 
         this.http.put("http://localhost:8000/reviews/" 
-             + reviewId,{ username, email, rating, comment})
+             + reviewId,{ username, bookTitle, rating, comment})
           .subscribe(() => {
               console.log('Updated: ' + reviewId);
           });

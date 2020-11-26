@@ -10,18 +10,18 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class NewReviewFormComponent implements OnInit {
   @Input() username: string;
-  @Input() email: string;
+  @Input() bookTitle: string;
   @Input() rating: number;
   @Input() comment: string;
   public mode = 'Add'; //default mode
   private id: string; //review ID
 
   onSubmit() {
-    console.log("You submitted: " + this.username + " " + this.email + " " + this.rating + " " + this.comment);
+    console.log("You submitted: " + this.username + " " + this.bookTitle + " " + this.rating + " " + this.comment);
     if (this.mode == 'Add')
-      this._myService.addReviews(this.username, this.email, this.rating, this.comment);
+      this._myService.addReviews(this.username, this.bookTitle, this.rating, this.comment);
     if (this.mode == 'Edit')
-      this._myService.updateReview(this.id, this.username, this.email, this.rating, this.comment);
+      this._myService.updateReview(this.id, this.username, this.bookTitle, this.rating, this.comment);
     this.router.navigate(['/listReviews']);
   }
  // initialize the call using ReviewService

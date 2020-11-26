@@ -8,83 +8,106 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Header -->
-<header class="w3-container w3-red w3-center" style="background-image: url('https://www.asknormen.co.uk/resources/uploads/promotions/for-children-live-chat-and-facilitated-self-refe//live-chat-banner.jpg'); padding:130px 16px" > 
+<header class="w3-container w3-red w3-center" style="background-image: url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); padding:100px 16px" > 
+
   <h1 class="w3-margin w3-jumbo">Discussion </h1>
   <p class="w3-xlarge"></p>
 </header>
 
-<body style="padding-top: 50px;"> 
-<div class="list row">
-    <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by username"
-          [(ngModel)]="username"
-        />
-        <div class="input-group-append">
-          <button mat-flat-button color="primary"
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchUsername()"
-          >
-            Search
-          </button>
+<body>
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1200px" id="band">
+    <div class="list row">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search by username" [(ngModel)]="username"
+            style="width: 80%; float: left; height: 50px;" />
+          <div class="input-group-append">
+            <button mat-flat-button color="primary" class="btn btn-outline-secondary" type="button"
+              (click)="searchUsername()" style="width: 20%; float: right; height: 50px; font-size: 16px;">
+              Search
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="mat-body">
-      <h4>Discussions List</h4>
-      <ul class="list-group">
-  
-        <mat-list
-          class="list-group-item"
-          *ngFor="let discussion of discussions; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveDiscussion(discussion, i)"
-        >
-          <b>{{discussion.postn}}</b>
-          {{discussion.username}}
-          {{discussion.bookn}}
-        </mat-list>
+
+    <br><br><br>
+    <div class="w3-row-padding w3-justify w3-margin-top style=float:left; width:80%;">
+
+      <div class="w3-row">
+        
+        <h1 class="w3-wide w3-xlarge ">DISCUSSIONS LIST</h1>
+        <hr style="width:50px;border:solid #673AB7" class="w3-round" >
+        
+        <ul class="list-group">
+          <mat-selection-list #discussion [multiple]="false">
+          <mat-list-option class="list-group-item" *ngFor="let discussion of discussions; let i = index"
+            [class.active]="i == currentIndex" (click)="setActiveDiscussion(discussion, i)">
+            <b>{{discussion.postn}}</b> 
+            {{discussion.username}}
+            {{discussion.bookn}}
+          </mat-list-option>
+          </mat-selection-list>
+          <hr>
+        
+
+      
+      
+        <div *ngIf="currentDiscussion">
+          <!--<h4>Discussion Post</h4>-->
+          <div>
+            <label><strong>Username:</strong></label> {{ currentDiscussion.username }}
+          </div>
+          <div>
+            <label><strong>Post Title:</strong></label>
+            {{ currentDiscussion.postn }}
+          </div>
+          <div>
+            <label><strong>Book Title:</strong></label>
+            {{ currentDiscussion.bookn }}
+          </div>
+          <div>
+            <label><strong>Post:</strong></label>
+            {{ currentDiscussion.post }}
+          </div>
+          <div>
+            <label><strong>Status:</strong></label>
+            {{ currentDiscussion.read ? "Read" : "Pending" }}
+          </div>
+          <br>
+
+          <button mat-button mat-stroked-button color="primary"[routerLink]="['/discussions/edit', currentDiscussion._id]">
+            Edit
+          </button>
+
+        </div>
+
+        <div *ngIf="!currentDiscussion">
+          <br />
+          <p>Please click on a Discussion Post</p>
+        </div>
       </ul>
-  <button mat-raised-button color="primary" routerLink="/discussions/add">Create a Discussion Post</button>
-      <button mat-raised-button color="warn" (click)="removeAllDiscussions()">
+    </div>
+    </div>
+  
+
+
+    <div class="w3-row">
+
+      <button mat-raised-button color="primary" routerLink="/discussions/add" style="width: 20%; height: 50px; font-size: 16px;">Create a Discussion Post</button> &nbsp;
+      <button mat-raised-button color="warn" (click)="removeAllDiscussions()" style="width: 20%; height: 50px; font-size: 16px;">
         Remove All
       </button>
     </div>
-    <div class="mat-body">
-      <div *ngIf="currentDiscussion">
-        <h4>Discussion Post</h4>
-        <div>
-          <label><strong>Username:</strong></label> {{ currentDiscussion.username }}
-        </div>
-        <div>
-          <label><strong>Post Title:</strong></label>
-          {{ currentDiscussion.postn }}
-        </div>
-        <div>
-          <label><strong>Book Title:</strong></label>
-          {{ currentDiscussion.bookn }}
-        </div>
-        <div>
-          <label><strong>Post:</strong></label>
-          {{ currentDiscussion.post }}
-        </div>
-        <div>
-          <label><strong>Status:</strong></label>
-          {{ currentDiscussion.read ? "Read" : "Pending" }}
-        </div>
-  
-        <a class="badge badge-warning" [routerLink]="['/discussions/edit', currentDiscussion._id]">
-          Edit
-        </a>
-      </div>
-  
-      <div *ngIf="!currentDiscussion">
-        <br />
-        <p>Please click on a Discussion Post</p>
-      </div>
-    </div>
-  </div>  
+
+  </div>
+
+</body>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center " style="background-color:#673AB7 ; color: white;">  
+  <div class="w3-xlarge w3-padding-32">
+
+ </div>
+ <p>A project by Stephen Birt, Delphine Diallo, Kathreen Greer, Anna Kurenkov. <a href="http://catalog.kennesaw.edu/preview_course_nopop.php?catoid=25&coid=42423" target="_blank">IT Studio Design class</a></p>
+</footer>
