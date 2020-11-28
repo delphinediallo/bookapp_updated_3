@@ -10,7 +10,7 @@ const bookModel = require('./models/book');
 const Review = require('./models/review')
 
 const { hasLifecycleHook } = require('@angular/compiler/src/lifecycle_reflector');
-const connectionString = 'mongodb+srv://admin:VERify45@cluster0.cqyls.azure.mongodb.net/book-app?retryWrites=true&w=majority';
+const connectionString = 'url goes here';
 
 mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {console.log('Mongo db connected');})
