@@ -41,7 +41,9 @@ app.get('/news', (req,res,next) => {
 
 //retrieve all discussion posts from db
 app.get('/discussions', (req,res,next) => {
-    discussionPost.find()
+  const username = req.query.username;
+  var condition = username ? { username: { $regex: new RegExp(username), $options: "i" } } : {};
+    discussionPost.find(condition)
     .then(data => res.status(200).json(data))
     .catch(err => {
         console.log('Error: $(err)');
@@ -51,7 +53,9 @@ app.get('/discussions', (req,res,next) => {
 
 //retrieve all books from db
 app.get('/books', (req,res,next) => {
-    bookModel.find()
+  const title = req.query.title;
+  var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
+    bookModel.find(condition)
     .then(data => res.status(200).json(data))
     .catch(err => {
         console.log('Error: $(err)');
@@ -93,7 +97,7 @@ app.get('/books/:id', (req,res,next) => {
 });
 
 //retrieve a single discussion
-app.get('/discussion/:id', (req,res,next) => {
+app.get('/discussions/:id', (req,res,next) => {
     discussionPost.findById(req.params.id)
     .then(data => res.status(200).json(data))
     .catch(err => {
@@ -111,6 +115,16 @@ app.get('/news/edit/:id', (req,res,next) => {
         console.log('Error: $(err)');
         res.status(500).json(err);
     });
+});
+
+//retrieve a single discussion post for editing
+app.get('/discussions/edit/:id', (req,res,next) => {
+  discussionPost.findById(req.params.id)
+  .then(data => res.status(200).json(data))
+  .catch(err => {
+      console.log('Error: $(err)');
+      res.status(500).json(err);
+  });
 });
 
 //add a new news post

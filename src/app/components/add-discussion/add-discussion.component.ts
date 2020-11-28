@@ -27,7 +27,8 @@ submitted = false;
       username: this.discussion.username,
       postn: this.discussion.postn,
       bookn: this.discussion.bookn,
-      post: this.discussion.post
+      post: this.discussion.post,
+      read: this.discussion.read
     };
 
     this.discussionService.createDiscussion(data)
@@ -39,6 +40,9 @@ submitted = false;
         error => {
           console.log(error);
         });
+
+      //after submit set submitted to true
+      this.submitted = true;
   }
 
   newDiscussion(): void {

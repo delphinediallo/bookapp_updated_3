@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiscussionService } from '../../services/discussion.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-discussion-details',
@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DiscussionDetailsComponent implements OnInit {
 currentDiscussion = null;
 message = '';
+private id:string;
 
   constructor(
     private discussionService: DiscussionService,
@@ -18,7 +19,16 @@ message = '';
 
   ngOnInit(): void {
     this.message = '';
-    this.getDiscussion(this.route.snapshot.paramMap.get('id'));
+    //this.getDiscussion(this.route.snapshot.paramMap.get('id'));
+    this.route.paramMap.subscribe((paramMap:ParamMap) => {
+      if(paramMap.has('_id')) { 
+        this.id = paramMap.get('_id');
+        this.getDiscussion(this.id);
+      }
+      else {
+        this.id = null;
+      }
+    });
   }
 
   getDiscussion(id): void {
@@ -42,7 +52,7 @@ message = '';
       read: status
     };
 
-    this.discussionService.updateDiscussion(this.currentDiscussion.id, data)
+    this.discussionService.updateDiscussion(this.id, data)
       .subscribe(
         response => {
           this.currentDiscussion.read = status;
@@ -54,7 +64,7 @@ message = '';
   }
 
   updateDiscussion(): void {
-    this.discussionService.updateDiscussion(this.currentDiscussion.id, this.currentDiscussion)
+    this.discussionService.updateDiscussion(this.id, this.currentDiscussion)
       .subscribe(
         response => {
           console.log(response);
@@ -66,7 +76,7 @@ message = '';
   }
 
   deleteDiscussion(): void {
-    this.discussionService.deleteOneDiscussion(this.currentDiscussion.id)
+    this.discussionService.deleteOneDiscussion(this.id)
       .subscribe(
         response => {
           console.log(response);

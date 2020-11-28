@@ -33,7 +33,7 @@ export class DiscussionService {
     return this.http.delete(baseUrl);
   }
 
-  findDiscussionByUser(username): Observable<any> {
-    return this.http.get(`${baseUrl}?title=${username}`);
+  findByUser(username): Observable<any> {
+    return this.http.get(`${baseUrl}?username=${username}`);
   }
 }

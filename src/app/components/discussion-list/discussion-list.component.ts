@@ -55,7 +55,7 @@ username = '';
   }
 
   searchUsername(): void {
-    this.discussionService.findDiscussionByUser(this.username)
+    this.discussionService.findByUser(this.username)
       .subscribe(
         data => {
           this.discussions = data;

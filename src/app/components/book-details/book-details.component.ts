@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../services/book.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-book-details',
@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BookDetailsComponent implements OnInit {
   currentBook = null;
   message = '';
+  private id: string;
 
   constructor(private bookService: BookService,
     private route: ActivatedRoute,
@@ -17,8 +18,16 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = '';
-    this.getAllBooks();
     //this.getBook(this.route.snapshot.paramMap.get('id'));
+    this.route.paramMap.subscribe((paramMap:ParamMap) => {
+      if(paramMap.has('_id')) { 
+        this.id = paramMap.get('_id');
+        this.getBook(this.id);
+      }
+      else {
+        this.id = null;
+      }
+    });
   }
 
   getAllBooks() {
@@ -43,7 +52,7 @@ export class BookDetailsComponent implements OnInit {
 
   //removed published   
 updateBook(): void {
-  this.bookService.update(this.currentBook.id, this.currentBook)
+  this.bookService.update(this.id, this.currentBook)
     .subscribe(
       response => {
         console.log(response);
@@ -53,8 +62,9 @@ updateBook(): void {
         console.log(error);
       });
   }
+  
 deleteBook(): void {
-  this.bookService.delete(this.currentBook.id)
+  this.bookService.delete(this.id)
     .subscribe(
       response => {
         console.log(response);

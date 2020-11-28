@@ -38,6 +38,9 @@ export class AddBookComponent implements OnInit {
         error => {
           console.log(error);
         });
+        
+      //after submit, set submitted to true  
+      this.submitted = true;
   }
 
   newBook(): void { //changed from newTutorial

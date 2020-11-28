@@ -46,7 +46,7 @@ const appRoutes: Routes = [
     path:'news', //view all news
     component: BlogPostViewerComponent },
   {
-    path: 'listReviews',       //when reviews listed
+    path:'listReviews', //when reviews listed
     component: ListReviewsComponent },
   {
     path:'books/add', //add book
@@ -58,14 +58,14 @@ const appRoutes: Routes = [
     path:'news/add', //add news post
     component: BlogPostEditorComponent },
   {
-    path: 'addReview',         //when reviews added 
+    path:'addReview', //when reviews added 
     component: NewReviewFormComponent  },
   {
     path:'news/edit/:_id', //edit news post
     component: BlogPostEditorComponent },
   {
-      path: 'editReview/:_id',         //when reviews edited 
-      component: NewReviewFormComponent},
+    path:'editReview/:_id', //when reviews edited 
+    component: NewReviewFormComponent},
   {
     path:'discussions/edit/:_id', //edit discussion
     component: DiscussionDetailsComponent },

@@ -20,7 +20,7 @@ export class BookService {
   }
 
   create(data): Observable<any> {
-    return this.http.post(baseUrl, data);
+    return this.http.post('http://localhost:8000/books/add', data);
   }
 
   update(id, data): Observable<any> {
